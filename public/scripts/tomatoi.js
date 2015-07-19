@@ -1,19 +1,6 @@
 var timerHistory = []; // temporary global timerHistory set
 
 /**
- **		Main Component
- **/
-var MainBox = React.createClass({
-	render: function() {
-		return (
-			<div className="mainBox">
-				<TimerBox />
-			</div>
-		);
-	}
-})
-
-/**
  **		Main Timer Componenets
  **
  **/
@@ -75,6 +62,7 @@ var Btn = React.createClass({
 	}
 })
 
+
 /**
  **		Countdown display component
  **/
@@ -120,6 +108,7 @@ var CountdownBox = React.createClass({
 		)
 	}
 })
+
 
 /**
  **		Timer History Component
@@ -190,6 +179,6 @@ var HistoryItem = React.createClass({
 	}
 })
 React.render(
-	<MainBox />,
+	<TimerBox />,
 	document.getElementById('content')
 );
