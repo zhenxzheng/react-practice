@@ -24,6 +24,9 @@ body {
 	color: $base-color;
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.8em;
+	@media screen and (max-width: $screen-small){
+		font-size: 88%;
+	}
 }
 p {
 	width: 100%;

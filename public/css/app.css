@@ -60,6 +60,9 @@ body {
   color: #676758;
   -webkit-font-smoothing: antialiased;
   line-height: 1.8em; }
+  @media screen and (max-width: 400px) {
+    body {
+      font-size: 88%; } }
 
 p, h1, h2, h3 {
   width: 100%;
@@ -144,4 +147,4 @@ a {
       background-color: #3d61a1;
       box-shadow: 0px 3px 0px 0px #3d61a1; }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=app.css.map */
