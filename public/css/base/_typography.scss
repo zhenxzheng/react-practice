@@ -1,0 +1,70 @@
+@import "../helpers/variables";
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+$bolder: 900;
+
+// Base Font
+$base-font-family: "Cantarell", sans-serif;
+$base-font-weight: normal;
+$base-font-size: 18px;
+$base-line-height: 1.4;
+
+// Secondary Font
+$secondary-font-family: "Fjalla One", sans-serif;
+
+// Headings
+$header-font-weight: $bold;
+
+body {
+	font-family: $base-font-family;
+	font-weight: $base-font-weight;
+	font-size: $base-font-size;
+	color: $base-color;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.8em;
+}
+p {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5em;
+	&.large {
+		font-size: $base-font-size * 1.5;
+	}
+	&.small {
+		font-size: $base-font-size * 0.75;
+	}
+}
+
+h1 {
+	@extend p;
+	font-family: $secondary-font-family;
+	font-size: $base-font-size * 3;
+	letter-spacing: 0.11em;
+	font-weight:$bold;
+	line-height: 1.3em;
+}
+
+h2 {
+	@extend p;
+	font-family: $secondary-font-family;
+	font-size: $base-font-size * 2.5;
+	line-height: 1.3em;
+}
+
+h3 {
+	@extend p;
+	font-size: $base-font-size * 2;
+	line-height: 1.3em;
+}
+
+a {
+	color: $base-color;
+	text-decoration: none;
+}
+
+.center {
+	text-align: center;
+}

@@ -1,0 +1,1 @@
+This is just a practice to recreate the tomatoi st application by using React.js and SCSS.
