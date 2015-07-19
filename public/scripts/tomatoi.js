@@ -50,7 +50,7 @@ var TimerBox = React.createClass({
 			<div className="timerBox">
 				<div className="timerBtns">
 					<Btn id="opmodoro" value="25" onClick={this.timerClick}>Pomodoro</Btn>
-					<Btn id="short" value="0.1" onClick={this.timerClick}>Short Break</Btn>
+					<Btn id="short" value="5" onClick={this.timerClick}>Short Break</Btn>
 					<Btn id ="long" value="15" onClick={this.timerClick}>Long Break</Btn>
 				</div>
 				<CountdownBox time={this.state.time} sound={this.state.sound}/>
