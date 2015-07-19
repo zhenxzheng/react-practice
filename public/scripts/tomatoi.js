@@ -20,7 +20,7 @@ var MainBox = React.createClass({
 var TimerBox = React.createClass({
 	getInitialState: function() {
 		// initial state - timer sets to 0 with empty timer history
-		return {time: 0, timerHistory: []};
+		return {time: 0, timerHistory: [], sound: false};
 	},
 
 	// timer buttons function - calculates timer end time, updates history array
@@ -37,23 +37,23 @@ var TimerBox = React.createClass({
 		timerHistory.unshift({timerType: buttonInfo.children, date: timestamp});
 
 		// refresh display and history list with new data
-		this.setState({time: endTime, timerHistory: timerHistory});
+		this.setState({time: endTime, timerHistory: timerHistory, sound: true});
 	},
 
 	// reset button - clears history and set timer back to 0
 	resetClick: function(){
 		timerHistory = [];
-		this.setState({time: 0, timerHistory: timerHistory});
+		this.setState({time: 0, timerHistory: timerHistory, sound: false});
 	},
 	render: function() {
 		return (
 			<div className="timerBox">
 				<div className="timerBtns">
 					<Btn id="opmodoro" value="25" onClick={this.timerClick}>Pomodoro</Btn>
-					<Btn id="short" value="5" onClick={this.timerClick}>Short Break</Btn>
+					<Btn id="short" value="0.1" onClick={this.timerClick}>Short Break</Btn>
 					<Btn id ="long" value="15" onClick={this.timerClick}>Long Break</Btn>
 				</div>
-				<CountdownBox time={this.state.time}/>
+				<CountdownBox time={this.state.time} sound={this.state.sound}/>
 				<Btn id="reset" onClick={this.resetClick}>Reset</Btn>
 				<HistoryBox timerHistory={this.state.timerHistory}/>
 			</div>
@@ -84,6 +84,7 @@ var CountdownBox = React.createClass({
 	},
 	componentDidMount: function(){
 		// refresh timer every second
+		console.log("test");
 		this.timer = setInterval(this.tick, 1000);
 	},
 	componentWillUnmout: function(){
@@ -94,7 +95,13 @@ var CountdownBox = React.createClass({
 		if (this.props.time - new Date() > 0){
 			this.setState({elapsed: this.props.time - new Date()})
 		}
-		else this.setState({elapsed:0});
+		else {
+			if (this.props.sound) {
+				document.getElementById('beepSound').play();
+				this.props.sound = false;
+			}
+			this.setState({elapsed:0});
+		}
 		// console.log(this.state.elapsed);
 	},
 	render: function() {
@@ -105,6 +112,10 @@ var CountdownBox = React.createClass({
 		return (
 			<div className="countdownBox">
 				<h1 className="digits">{minutes<10?"0"+minutes:minutes}:{seconds<10?"0"+seconds:seconds}</h1>
+				<audio id="beepSound">
+					<source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/41203/beep.mp3"/>
+					<source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/41203/beep.ogg" />
+				</audio>
 			</div>
 		)
 	}
